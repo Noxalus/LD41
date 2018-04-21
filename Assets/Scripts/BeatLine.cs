@@ -17,7 +17,7 @@ public class BeatLine : MonoBehaviour
     public UnityEvent onHit;
 
     // Parameters
-    public float beatRate;
+    public float beatRate { get; set; }
     public int maxNumBeats;
     public int cursorPos;
     public int spawnProbability;
