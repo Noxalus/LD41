@@ -62,8 +62,10 @@ public class BeatLine : MonoBehaviour
             return;
 
         var deltaTime = _audioSource.time - _lastUpdateTime;
-        if (deltaTime < 0f)
-            deltaTime = _audioSource.time;
+        if (deltaTime < 0f) {
+            deltaTime = _audioSource.time +
+                        _audioSource.clip.length - _lastUpdateTime;
+        }
 
         _lastUpdateTime = _audioSource.time;
 
