@@ -794,7 +794,7 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   maxNumBeats: 5
   cursorPos: 1
-  spawnProbability: 100
+  spawnProbability: 50
 --- !u!1 &273418603
 GameObject:
   m_ObjectHideFlags: 0
