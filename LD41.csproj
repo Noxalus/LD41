@@ -244,6 +244,7 @@
     <Compile Include="Assets\Scripts\Enemy\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\SpriteLerper.cs" />
+    <Compile Include="Assets\Scripts\Tower\BulletController.cs" />
     <Compile Include="Assets\Scripts\Tower\TowerController.cs" />
     <Compile Include="Assets\Scripts\Tower\TowerManager.cs" />
     <Compile Include="Assets\Scripts\Tower\TowerUtility.cs" />
