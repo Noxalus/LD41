@@ -32,6 +32,6 @@ public class SpriteLerper : MonoBehaviour {
         }
 
         var pos = Vector2.Lerp(startPos, endPos, alpha);
-		transform.position = new Vector3(pos.x, pos.y, transform.position.z);
+		transform.localPosition = new Vector3(pos.x, pos.y, transform.position.z);
 	}
 }

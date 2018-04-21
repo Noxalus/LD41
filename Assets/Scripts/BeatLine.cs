@@ -19,7 +19,6 @@ public class BeatLine : MonoBehaviour
     private float _lineEnd;
     private float _elapsedTime;
 
-
     void Start()
     {
         _elapsedTime = 0f;
@@ -47,13 +46,13 @@ public class BeatLine : MonoBehaviour
     void SpawnCursor()
     {
         var cursor = Instantiate(cursorSprite, transform);
-        cursor.transform.position = new Vector3(_lineStart + cursorPos / (float) maxNumBeats * _lineLength, 0f, 0f);
+        cursor.transform.localPosition = new Vector3(_lineStart + cursorPos / (float) maxNumBeats * _lineLength, 0f, 0f);
     }
 
     void SpawnIcon()
     {
         var newIcon = Instantiate(towerSprite, transform);
-        newIcon.transform.position = new Vector3(_lineEnd, 0.0f, 0.0f);        
+        newIcon.transform.localPosition = new Vector3(_lineEnd, 0.0f, 0.0f);        
         var spriteLerper = newIcon.AddComponent<SpriteLerper>();
         spriteLerper.startPos = new Vector2(_lineEnd, 0.0f);
         spriteLerper.endPos = new Vector2(_lineStart, 0.0f);
