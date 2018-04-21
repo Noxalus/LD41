@@ -32,10 +32,10 @@ public class BeatLine : MonoBehaviour
 
     private SpriteRenderer _cursor;
 
-    public void Run()
+    public void Run(float elapsedTime)
     {
         _running = true;
-        _elapsedTime = 0f;
+        _elapsedTime = elapsedTime;
     }
 
     void Start()
@@ -59,7 +59,7 @@ public class BeatLine : MonoBehaviour
         _elapsedTime += Time.deltaTime;
         if (_elapsedTime > (1.0f / beatRate))
         {
-            _elapsedTime = 0f;
+            _elapsedTime -= (1f / beatRate);
             SpawnIcon();
         }
 

@@ -1909,7 +1909,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0403ba44310c4a3c826b4aa7b698c3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bpm: 120
+  bpm: 128
+  offset: 0
 --- !u!82 &1251064927
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1919,7 +1920,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1a4e3fa4ba59f45b2b4a957f7b1ebb40, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 07836aa14a6b44a1c96b7746a40f26e6, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

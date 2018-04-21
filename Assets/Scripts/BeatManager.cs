@@ -10,13 +10,14 @@ public class BeatManager : MonoBehaviour {
         
         var beat = GetComponent<Beat>();
         var bpm = beat.bpm;
+        var offset = beat.offset;
 
         var beatLines = new List<BeatLine>();
 		GetComponentsInChildren<BeatLine>(beatLines);
 
         foreach (var beatLine in beatLines) {
             beatLine.beatRate = bpm / 60f;
-            beatLine.Run();
+            beatLine.Run(offset / bpm / beatLine.beatRate);
         }
 
         audioSource.Play();
