@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4374290686771890}
   - component: {fileID: 212640904121026136}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 195607261195074096}
   - component: {fileID: 114100011914897366}
   - component: {fileID: 65862599828757524}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Enemy1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,8 +110,14 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+    m_TypeName: EnemyActionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: EnemyActionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  moneyDropped: 0
 --- !u!195 &195607261195074096
 NavMeshAgent:
   m_ObjectHideFlags: 1

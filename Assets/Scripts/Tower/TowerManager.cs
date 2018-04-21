@@ -7,15 +7,13 @@ public class TowerManager : MonoBehaviour
   public GameObject tower1Prefab;
   private Camera _camera;
   private float _towerRadius;
-  private int _layerMask;
-  private int _maxRayDistance;
-  private List<GameObject> towers1;
+  private int _layerMask = (1 << 8) | (1 << 9) | (1 << 11);
+  private int _maxRayDistance = 11;
+  private List<GameObject> towers1 = new List<GameObject>();
   // Use this for initialization
   void Start()
   {
     _camera = Camera.main;
-    _layerMask = (1 << 8) | (1 << 9) | (1 << 11);
-    _maxRayDistance = 11;
     _towerRadius = tower1Prefab.transform.localScale.x / 1.6f;
   }
 
