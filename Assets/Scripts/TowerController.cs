@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TowerController : MonoBehaviour
 {
-
+  public GameObject tower1Prefab;
   private Camera _camera;
   private int _layerMask;
   private int _maxRayDistance;
