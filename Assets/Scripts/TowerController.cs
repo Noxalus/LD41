@@ -12,7 +12,7 @@ public class TowerController : MonoBehaviour
   void Start()
   {
     _camera = Camera.main;
-    _layerMask = 1 << 8;
+    _layerMask = (1 << 8) | (1 << 9);
     _maxRayDistance = 11;
   }
 
@@ -22,9 +22,10 @@ public class TowerController : MonoBehaviour
     if (Input.GetMouseButtonDown(0))
     {
       Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-      if (Physics.Raycast(ray, _maxRayDistance, _layerMask))
+      RaycastHit hit;
+      if (Physics.Raycast(ray, out hit, _maxRayDistance, _layerMask))
       {
-        Debug.Log("Did Hit");
+        Debug.Log("Did Hit " + hit.collider.gameObject.name);
       }
     }
   }
