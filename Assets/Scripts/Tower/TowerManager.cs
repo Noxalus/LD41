@@ -29,7 +29,9 @@ public class TowerManager : MonoBehaviour
         TowerUtility.SortFromCenter(ray.origin, hits);
         if (hits[0].collider.gameObject.tag == "Ground" && hits.Length == 1)
         {
-          towers1.Add(Instantiate(tower1Prefab, ray.GetPoint(9), Quaternion.identity));
+          Vector3 pos = ray.GetPoint(0);
+          pos.y = 0.6f;
+          towers1.Add(Instantiate(tower1Prefab, pos, Quaternion.identity));
         }
       }
     }
@@ -39,7 +41,7 @@ public class TowerManager : MonoBehaviour
   {
     towers1.ForEach(delegate (GameObject tower)
     {
-        tower.GetComponentInChildren<TowerController>().Shoot();
+      tower.GetComponentInChildren<TowerController>().Shoot();
     });
   }
 }

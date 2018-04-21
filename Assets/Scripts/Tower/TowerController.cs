@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class TowerController : MonoBehaviour
 {
@@ -34,9 +35,10 @@ public class TowerController : MonoBehaviour
       Debug.Log("Find enemy to target !");
       TowerUtility.SortFromCenter(this.transform.position, hits);
       GameObject target = hits[0].collider.gameObject;
-      GameObject bullet = Instantiate(prefabBullet, this.transform.position + new Vector3(0, 1, 0), Quaternion.identity);
-      Vector3 shoot = (target.transform.position - bullet.transform.position).normalized;
-      bullet.GetComponent<Rigidbody>().AddForce(shoot * 600.0f);
+      GameObject bullet = Instantiate(prefabBullet, this.transform.position + new Vector3(0, 0.1f, 0), Quaternion.identity);
+      Vector3 targetPos = TowerUtility.predictedPosition(target.transform.position + Vector3.up * 0.25f, this.transform.position, target.GetComponent<NavMeshAgent>().velocity, 10f);
+      Vector3 shoot = (targetPos - bullet.transform.position).normalized;
+      bullet.GetComponent<Rigidbody>().AddForce(shoot * 500.0f);
     }
   }
 }
