@@ -28,11 +28,10 @@ public class TowerController : MonoBehaviour
 
   public void Shoot()
   {
-    Debug.Log("Shoot!");
     RaycastHit[] hits = Physics.SphereCastAll(this.transform.position, range, Vector3.up, 99, _layerMask);
     if (hits.Length != 0)
     {
-      Debug.Log("Find enemy to target !");
+      GetComponent<AudioSource>().Play();
       TowerUtility.SortFromCenter(this.transform.position, hits);
       GameObject target = hits[0].collider.gameObject;
       GameObject bullet = Instantiate(prefabBullet, this.transform.position + new Vector3(0, 0.1f, 0), Quaternion.identity);
