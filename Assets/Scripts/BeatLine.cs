@@ -46,7 +46,7 @@ public class BeatLine : MonoBehaviour
     void SpawnCursor()
     {
         var cursor = Instantiate(cursorSprite, transform);
-        cursor.transform.position += new Vector3(_lineStart + cursorPos / (float) maxNumBeats * _lineLength, 0f, 0f);
+        cursor.transform.localPosition = new Vector3(_lineStart + cursorPos / (float) maxNumBeats * _lineLength, 0f, 0f);
     }
 
     void SpawnIcon()
