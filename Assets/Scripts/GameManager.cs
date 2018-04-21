@@ -12,14 +12,18 @@ public class GameManager : MonoBehaviour {
 
     private int _life;
     private int _money;
+    private bool _gameIsOver;
 
 	void Start ()
     {
         _life = initialLife;
         _money = initialMoney;
+        _gameIsOver = false;
 
         UpdateMoneyLabel();
         UpdateLifeLabel();
+
+        gameOverUI.SetActive(false);
     }
 
     private void UpdateMoneyLabel()
@@ -30,6 +34,23 @@ public class GameManager : MonoBehaviour {
     private void UpdateLifeLabel()
     {
         lifeLabel.text = _life.ToString();
+    }
+
+    public void OnBeatMissed()
+    {
+        WasteMoney(5);
+    }
+
+    public void OnBeatHit()
+    {
+        // TODO: TowerManager trigger towers' shoot
+    }
+
+    private void WasteMoney(int waste)
+    {
+        // TODO: Play an animation
+        _money = Mathf.Max(0, waste);
+        UpdateMoneyLabel();
     }
 
     public void OnEnemyDeath(EnemyAction enemyAction)
@@ -50,5 +71,6 @@ public class GameManager : MonoBehaviour {
     private void GameOver()
     {
         gameOverUI.SetActive(true);
+        _gameIsOver = true;
     }
 }
