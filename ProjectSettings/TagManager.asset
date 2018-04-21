@@ -17,10 +17,10 @@ TagManager:
   - 
   - Ground
   - Path
-  - 
-  - 
-  - 
-  - 
+  - Enemy
+  - Tower
+  - Exit
+  - Bullet
   - 
   - 
   - 

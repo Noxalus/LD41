@@ -4,6 +4,9 @@ using UnityEngine.AI;
 public class Enemy1 : MonoBehaviour {
 
     public Transform target;
+    public EnemyActionEvent onDeath;
+    public EnemyActionEvent onExit;
+    public int moneyDropped;
 
     private NavMeshAgent _agent;
 
@@ -15,5 +18,15 @@ public class Enemy1 : MonoBehaviour {
 	void Update ()
     {
         _agent.SetDestination(target.position);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        onDeath.Invoke(new EnemyAction(this));
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        onExit.Invoke(new EnemyAction(this));
     }
 }
