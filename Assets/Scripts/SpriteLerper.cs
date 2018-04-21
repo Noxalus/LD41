@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SpriteLerper : MonoBehaviour {
 
-    public Vector2 startPos;
-    public Vector2 endPos;
+    public float startX;
+    public float endX;
     public float duration;
 
     private SpriteRenderer _sprite;
@@ -27,7 +27,7 @@ public class SpriteLerper : MonoBehaviour {
             return;
         }
 
-        var pos = Vector2.Lerp(startPos, endPos, alpha);
-		transform.localPosition = new Vector3(pos.x, pos.y, transform.position.z);
+        var x = Mathf.Lerp(startX, endX, alpha);
+		transform.localPosition = new Vector3(x, 0f, 0f);
 	}
 }

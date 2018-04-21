@@ -1,15 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BeatLine : MonoBehaviour
 {
     // Sprites
-    public GameObject towerSprite;
-    public GameObject cursorSprite;
+    public GameObject towerIconPrefab;
+    public GameObject cursorPrefab;
 
     // Inputs
     public KeyCode keyCode;
+
+    // Events
+    public UnityEvent onMiss;
+    public UnityEvent onHit;
 
     // Parameters
     public float beatRate;
@@ -22,6 +27,8 @@ public class BeatLine : MonoBehaviour
     private float _lineStart;
     private float _lineEnd;
     private float _elapsedTime;
+
+    private SpriteRenderer _cursor;
 
     void Start()
     {
@@ -52,21 +59,50 @@ public class BeatLine : MonoBehaviour
 
     void KeyPressed()
     {
-        Debug.Log("KeyPressed");
+        var spriteLerpers = new List<SpriteLerper>();
+        GetComponentsInChildren<SpriteLerper>(spriteLerpers);
 
-        var sprites = new List<SpriteLerper>();
-        GetComponentsInChildren<SpriteLerper>(sprites);
+        var sprites = new List<SpriteRenderer>();
+        foreach (var s in spriteLerpers)
+            sprites.Add(s.gameObject.GetComponent<SpriteRenderer>());
+
+        var spritesInBounds = new List<SpriteRenderer>();
 
         foreach (var sprite in sprites)
         {
-            // fixme
+            if (IsWithinCursorBounds(sprite))
+                spritesInBounds.Add(sprite);
         }
+
+        if (spritesInBounds.Count == 0)
+            OnMiss();
+        else
+            OnHit(spritesInBounds[0]);
+    }
+
+    bool IsWithinCursorBounds(SpriteRenderer sprite)
+    {
+        return _cursor.bounds.Intersects(sprite.bounds);
+    }
+
+    void OnMiss()
+    {
+        Debug.Log("OnMiss");
+        onMiss.Invoke();
+    }
+
+    void OnHit(SpriteRenderer sprite)
+    {
+        Debug.Log("OnHit");
+        DestroyObject(sprite.gameObject);
+
+        onHit.Invoke();
     }
 
     void SpawnCursor()
     {
-        var cursor = Instantiate(cursorSprite, transform);
-        cursor.transform.localPosition = new Vector3(_lineStart + cursorPos / (float) maxNumBeats * _lineLength, 0f, 0f);
+        _cursor = Instantiate(cursorPrefab, transform).GetComponent<SpriteRenderer>();
+        _cursor.transform.localPosition = new Vector3(_lineStart + cursorPos / (float) maxNumBeats * _lineLength, 0f, 0f);
     }
 
     void SpawnIcon()
@@ -74,11 +110,11 @@ public class BeatLine : MonoBehaviour
         if (Random.value >= 1f - (spawnProbability / 100f))
             return;
 
-        var newIcon = Instantiate(towerSprite, transform);
+        var newIcon = Instantiate(towerIconPrefab, transform);
         newIcon.transform.localPosition = new Vector3(_lineEnd, 0.0f, 0.0f);        
         var spriteLerper = newIcon.AddComponent<SpriteLerper>();
-        spriteLerper.startPos = new Vector2(_lineEnd, 0.0f);
-        spriteLerper.endPos = new Vector2(_lineStart, 0.0f);
+        spriteLerper.startX = _lineEnd;
+        spriteLerper.endX = _lineStart;
         spriteLerper.duration = maxNumBeats / beatRate;
     }
 }

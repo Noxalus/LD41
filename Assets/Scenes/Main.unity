@@ -529,11 +529,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ac860b24c0c6475489ebc424d301c16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerSprite: {fileID: 1348620475106922, guid: b392f673559c14d89ac6d27309f31aff,
+  towerIconPrefab: {fileID: 1348620475106922, guid: b392f673559c14d89ac6d27309f31aff,
     type: 2}
-  cursorSprite: {fileID: 1829850611508702, guid: bad9bd6ff5ff544f5a1cda5f9ffcdf79,
+  cursorPrefab: {fileID: 1829850611508702, guid: bad9bd6ff5ff544f5a1cda5f9ffcdf79,
     type: 2}
   keyCode: 118
+  onMiss:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   beatRate: 1
   maxNumBeats: 5
   cursorPos: 1
