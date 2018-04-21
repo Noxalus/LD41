@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class BeatLine : MonoBehaviour
 {
-    // Tower icon
+    // Sprites
     public GameObject towerSprite;
     public GameObject cursorSprite;
+
+    // Inputs
+    public KeyCode keyCode;
 
     // Parameters
     public float beatRate;
     public int maxNumBeats;
-    public int cursorPos; 
+    public int cursorPos;
+    public int spawnProbability;
 
     private LineRenderer _lineRenderer;
     private float _lineLength;
@@ -41,6 +45,22 @@ public class BeatLine : MonoBehaviour
             _elapsedTime = 0f;
             SpawnIcon();
         }
+
+        if (Input.GetKeyDown(keyCode))
+            KeyPressed();
+    }
+
+    void KeyPressed()
+    {
+        Debug.Log("KeyPressed");
+
+        var sprites = new List<SpriteLerper>();
+        GetComponentsInChildren<SpriteLerper>(sprites);
+
+        foreach (var sprite in sprites)
+        {
+            // fixme
+        }
     }
 
     void SpawnCursor()
@@ -51,6 +71,9 @@ public class BeatLine : MonoBehaviour
 
     void SpawnIcon()
     {
+        if (Random.value >= 1f - (spawnProbability / 100f))
+            return;
+
         var newIcon = Instantiate(towerSprite, transform);
         newIcon.transform.localPosition = new Vector3(_lineEnd, 0.0f, 0.0f);        
         var spriteLerper = newIcon.AddComponent<SpriteLerper>();

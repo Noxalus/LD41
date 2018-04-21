@@ -533,9 +533,11 @@ MonoBehaviour:
     type: 2}
   cursorSprite: {fileID: 1829850611508702, guid: bad9bd6ff5ff544f5a1cda5f9ffcdf79,
     type: 2}
+  keyCode: 118
   beatRate: 1
   maxNumBeats: 5
   cursorPos: 1
+  spawnProbability: 50
 --- !u!1 &273418603
 GameObject:
   m_ObjectHideFlags: 0
