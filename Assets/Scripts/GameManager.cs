@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
@@ -26,6 +27,12 @@ public class GameManager : MonoBehaviour {
         gameOverUI.SetActive(false);
     }
 
+    private void Update()
+    {
+        if (_gameIsOver && Input.GetMouseButtonDown(0))
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     private void UpdateMoneyLabel()
     {
         moneyLabel.text = _money.ToString();
@@ -38,6 +45,9 @@ public class GameManager : MonoBehaviour {
 
     public void OnBeatMissed()
     {
+        if (_gameIsOver)
+            return;
+
         WasteMoney(5);
     }
 
@@ -55,12 +65,18 @@ public class GameManager : MonoBehaviour {
 
     public void OnEnemyDeath(EnemyAction enemyAction)
     {
+        if (_gameIsOver)
+            return;
+
         _money += enemyAction.enemy.moneyDropped;
         UpdateMoneyLabel();
     }
 
     public void OnEnemyExit(EnemyAction enemyAction)
     {
+        if (_gameIsOver)
+            return;
+
         _life--;
         UpdateLifeLabel();
 
