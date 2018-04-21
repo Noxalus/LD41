@@ -39,7 +39,7 @@ public class TowerManager : MonoBehaviour
   {
     towers1.ForEach(delegate (GameObject tower)
     {
-      tower.GetComponent<TowerController>().Shoot();
+        tower.GetComponentInChildren<TowerController>().Shoot();
     });
   }
 }
