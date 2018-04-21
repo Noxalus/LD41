@@ -14,7 +14,7 @@ public class TowerController : MonoBehaviour
     _camera = Camera.main;
     _layerMask = (1 << 8) | (1 << 9) | (1 << 11);
     _maxRayDistance = 11;
-    _towerRadius = tower1Prefab.transform.localScale.x;
+    _towerRadius = tower1Prefab.transform.localScale.x / 1.6f;
   }
 
   // Update is called once per frame
