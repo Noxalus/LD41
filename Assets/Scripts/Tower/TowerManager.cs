@@ -9,12 +9,14 @@ public class TowerManager : MonoBehaviour
   private float _towerRadius;
   private int _layerMask = (1 << 8) | (1 << 9) | (1 << 11);
   private int _maxRayDistance = 11;
-  private List<GameObject> towers1 = new List<GameObject>();
+  private List<GameObject> _towers1 = new List<GameObject>();
+  private GameManager _gameManager;
   // Use this for initialization
   void Start()
   {
     _camera = Camera.main;
     _towerRadius = tower1Prefab.transform.localScale.x / 1.6f;
+    _gameManager = GetComponentInParent<GameManager>();
   }
 
   // Update is called once per frame
@@ -27,11 +29,11 @@ public class TowerManager : MonoBehaviour
       if (hits.Length != 0)
       {
         TowerUtility.SortFromCenter(ray.origin, hits);
-        if (hits[0].collider.gameObject.tag == "Ground" && hits.Length == 1)
+        if (hits[0].collider.gameObject.tag == "Ground" && hits.Length == 1 && _gameManager.CanPlaceTower())
         {
           Vector3 pos = ray.GetPoint(0);
           pos.y = 0.6f;
-          towers1.Add(Instantiate(tower1Prefab, pos, Quaternion.identity));
+          _towers1.Add(Instantiate(tower1Prefab, pos, Quaternion.identity));
         }
       }
     }
@@ -39,7 +41,7 @@ public class TowerManager : MonoBehaviour
 
   public void HandleRythmHit()
   {
-    towers1.ForEach(delegate (GameObject tower)
+    _towers1.ForEach(delegate (GameObject tower)
     {
       tower.GetComponentInChildren<TowerController>().Shoot();
     });
