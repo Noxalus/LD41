@@ -22,6 +22,8 @@ public class BeatLine : MonoBehaviour
     public int cursorPos;
     public int spawnProbability;
 
+    private bool _running;
+
     private LineRenderer _lineRenderer;
     private float _lineLength;
     private float _lineStart;
@@ -30,10 +32,15 @@ public class BeatLine : MonoBehaviour
 
     private SpriteRenderer _cursor;
 
+    public void Run()
+    {
+        _running = true;
+        _elapsedTime = 0f;
+    }
+
     void Start()
     {
-        _elapsedTime = 0f;
-
+        _running = false;
         _lineRenderer = GetComponent<LineRenderer>();
         var positions = new Vector3[_lineRenderer.positionCount];
         _lineRenderer.GetPositions(positions);
@@ -46,6 +53,9 @@ public class BeatLine : MonoBehaviour
 
     void Update()
     {
+        if (!_running)
+            return;
+
         _elapsedTime += Time.deltaTime;
         if (_elapsedTime > (1.0f / beatRate))
         {
@@ -107,7 +117,7 @@ public class BeatLine : MonoBehaviour
 
     void SpawnIcon()
     {
-        if (Random.value >= 1f - (spawnProbability / 100f))
+        if (Random.value >= spawnProbability / 100f)
             return;
 
         var newIcon = Instantiate(towerIconPrefab, transform);

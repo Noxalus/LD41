@@ -741,7 +741,7 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   maxNumBeats: 5
   cursorPos: 1
-  spawnProbability: 50
+  spawnProbability: 100
 --- !u!1 &273418603
 GameObject:
   m_ObjectHideFlags: 0
@@ -1821,7 +1821,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1a4e3fa4ba59f45b2b4a957f7b1ebb40, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
