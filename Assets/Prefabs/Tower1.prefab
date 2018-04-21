@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4189172667096832}
   - component: {fileID: 212649988871891170}
+  - component: {fileID: 114122007223091694}
   m_Layer: 11
   m_Name: tower_1
   m_TagString: Untagged
@@ -70,6 +71,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114122007223091694
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1254385081842586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab45aafb16f354365904881a78448972, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135135958945367220
 SphereCollider:
   m_ObjectHideFlags: 1

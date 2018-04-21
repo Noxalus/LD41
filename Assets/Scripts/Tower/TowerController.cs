@@ -1,47 +1,37 @@
-﻿using System;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TowerController : MonoBehaviour
 {
-  public GameObject tower1Prefab;
-  private Camera _camera;
-  private float _towerRadius;
+  public float range;
+
   private int _layerMask;
-  private int _maxRayDistance;
+
   // Use this for initialization
   void Start()
   {
-    _camera = Camera.main;
-    _layerMask = (1 << 8) | (1 << 9) | (1 << 11);
-    _maxRayDistance = 11;
-    _towerRadius = tower1Prefab.transform.localScale.x / 1.6f;
+    _layerMask = (1 << 10);
+
   }
 
   // Update is called once per frame
   void Update()
   {
-    if (Input.GetMouseButtonDown(0))
+    if (Input.GetKeyDown(KeyCode.A))
     {
-      Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-      RaycastHit[] hits = Physics.SphereCastAll(ray, _towerRadius, _maxRayDistance, _layerMask);
-      if (hits.Length != 0)
-      {
-        SortFromCenter(ray, hits);
-        if (hits[0].collider.gameObject.tag == "Ground" && hits.Length == 1)
-        {
-          Instantiate(tower1Prefab, ray.GetPoint(9), Quaternion.identity);
-        }
-      }
+      Shoot();
     }
   }
 
-  private void SortFromCenter(Ray ray, RaycastHit[] hits)
+  public void Shoot()
   {
-    Array.Sort(hits, delegate (RaycastHit hit1, RaycastHit hit2)
+    Debug.Log("Shoot!");
+    RaycastHit[] hits = Physics.SphereCastAll(this.transform.position, range, Vector3.down, range, _layerMask);
+    if (hits.Length != 0)
     {
-      Vector3 relativeTarget1 = ray.origin - hit1.point;
-      Vector3 relativeTarget2 = ray.origin - hit2.point;
-      return Mathf.FloorToInt((relativeTarget1.x + relativeTarget1.z) / 2 - (relativeTarget2.x + relativeTarget2.z) / 2);
-    });
+      TowerUtility.SortFromCenter(this.transform.position, hits);
+      GameObject target = hits[0].collider.gameObject;
+    }
   }
 }
