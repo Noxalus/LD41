@@ -56,7 +56,6 @@ public class BeatLine : MonoBehaviour
         var spriteLerper = newIcon.AddComponent<SpriteLerper>();
         spriteLerper.startPos = new Vector2(_lineEnd, 0.0f);
         spriteLerper.endPos = new Vector2(_lineStart, 0.0f);
-        // fixme compute duration given beatRate, maxNumBeats and lineLength
-        spriteLerper.duration = 5f;
+        spriteLerper.duration = maxNumBeats / beatRate;
     }
 }

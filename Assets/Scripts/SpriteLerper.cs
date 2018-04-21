@@ -22,11 +22,7 @@ public class SpriteLerper : MonoBehaviour {
         _elapsedTime += Time.deltaTime;
         var alpha = _elapsedTime / duration;
 
-        Debug.Log("_elapsedTime: " + _elapsedTime);
-        Debug.Log("alpha: " + alpha);
-
         if (alpha > 1f) {
-            // Destroy(this);
             DestroyObject(gameObject);
             return;
         }
