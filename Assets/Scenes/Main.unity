@@ -1959,7 +1959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bpm: 128
-  offset: 32
+  offset: 80
 --- !u!82 &1251064927
 AudioSource:
   m_ObjectHideFlags: 0
