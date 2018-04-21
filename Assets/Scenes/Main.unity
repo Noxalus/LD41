@@ -2239,7 +2239,7 @@ MonoBehaviour:
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 5
     m_AlignByGeometry: 0
@@ -2374,7 +2374,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7062418e65088440ba5e4a256b4b454c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerRadius: 0.5
   tower1Prefab: {fileID: 1459098583759786, guid: a5a570377fe07413c8b38b173adb3ef7,
     type: 2}
 --- !u!1 &2057138991

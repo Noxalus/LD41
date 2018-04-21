@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Path
   - Ground
+  - Tag
   layers:
   - Default
   - TransparentFX

@@ -3,17 +3,18 @@ using UnityEngine;
 
 public class TowerController : MonoBehaviour
 {
-  public float towerRadius;
   public GameObject tower1Prefab;
   private Camera _camera;
+  private float _towerRadius;
   private int _layerMask;
   private int _maxRayDistance;
   // Use this for initialization
   void Start()
   {
     _camera = Camera.main;
-    _layerMask = (1 << 8) | (1 << 9);
+    _layerMask = (1 << 8) | (1 << 9) | (1 << 11);
     _maxRayDistance = 11;
+    _towerRadius = tower1Prefab.transform.localScale.x;
   }
 
   // Update is called once per frame
@@ -22,7 +23,7 @@ public class TowerController : MonoBehaviour
     if (Input.GetMouseButtonDown(0))
     {
       Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-      RaycastHit[] hits = Physics.SphereCastAll(ray, towerRadius, _maxRayDistance, _layerMask);
+      RaycastHit[] hits = Physics.SphereCastAll(ray, _towerRadius, _maxRayDistance, _layerMask);
       if (hits.Length != 0)
       {
         SortFromCenter(ray, hits);
