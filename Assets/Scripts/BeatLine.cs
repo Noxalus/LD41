@@ -28,14 +28,19 @@ public class BeatLine : MonoBehaviour
     private float _lineLength;
     private float _lineStart;
     private float _lineEnd;
+    private float _lastUpdateTime;
     private float _elapsedTime;
 
     private SpriteRenderer _cursor;
 
-    public void Run(float elapsedTime)
+    private AudioSource _audioSource;
+
+    public void Run(float timeOffset, AudioSource audioSource)
     {
         _running = true;
-        _elapsedTime = elapsedTime;
+        _elapsedTime = timeOffset;
+        _audioSource = audioSource;
+        _lastUpdateTime = _audioSource.time;
     }
 
     void Start()
@@ -56,7 +61,10 @@ public class BeatLine : MonoBehaviour
         if (!_running)
             return;
 
-        _elapsedTime += Time.deltaTime;
+        var deltaTime = _audioSource.time - _lastUpdateTime;
+        _lastUpdateTime = _audioSource.time;
+
+        _elapsedTime += deltaTime;
         if (_elapsedTime > (1.0f / beatRate))
         {
             _elapsedTime -= (1f / beatRate);

@@ -17,7 +17,7 @@ public class BeatManager : MonoBehaviour {
 
         foreach (var beatLine in beatLines) {
             beatLine.beatRate = bpm / 60f;
-            beatLine.Run(offset / bpm / beatLine.beatRate);
+            beatLine.Run(offset / bpm / beatLine.beatRate, audioSource);
         }
 
         audioSource.Play();
