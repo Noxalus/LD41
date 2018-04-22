@@ -25,6 +25,9 @@ public class TowerController : MonoBehaviour
     var angle = (-Mathf.Atan2(posY, posX) * Mathf.Rad2Deg) + 90f;
 
     transform.parent.rotation = Quaternion.Euler(0, angle, 0);
+
+        if (Input.GetKeyDown(KeyCode.A))
+            Shoot();
   }
 
   public void Shoot()

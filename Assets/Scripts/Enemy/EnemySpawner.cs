@@ -33,7 +33,7 @@ public class EnemySpawner : MonoBehaviour {
             var waveEnemyNumber = 1;
 
             if (spawnWave)
-                waveEnemyNumber = Random.Range(1, (int)(3 * difficultyManager.difficulty));
+                waveEnemyNumber = Random.Range(1, (int)(5 * difficultyManager.difficulty));
 
             for (int i = 0; i < waveEnemyNumber; i++)
                 SpawnEnemy();
@@ -49,6 +49,7 @@ public class EnemySpawner : MonoBehaviour {
         newEnemyScript.target = exitTransform;
         newEnemyScript.onDeath.AddListener(EnemyDeath);
         newEnemyScript.onExit.AddListener(EnemyExit);
+        newEnemyScript.life = (int)Mathf.Round(difficultyManager.difficulty) * 2;
     }
 
     private void EnemyDeath(EnemyAction enemyAction)
