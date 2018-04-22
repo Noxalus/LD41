@@ -38,6 +38,8 @@ public class BeatLine : MonoBehaviour
     private AudioSource _audioSource;
     private DifficultyManager _difficultyManager;
 
+    private float _cooldownTimer;
+
     private Vector3 _localPosition;
 
     public void Run(float timeOffset, AudioSource audioSource)
@@ -46,6 +48,7 @@ public class BeatLine : MonoBehaviour
         _elapsedTime = timeOffset;
         _audioSource = audioSource;
         _lastUpdateTime = _audioSource.time;
+        _cooldownTimer = 0;
     }
 
     void Start()
@@ -87,8 +90,15 @@ public class BeatLine : MonoBehaviour
             SpawnIcon();
         }
 
-        if (Input.GetKeyDown(keyCode))
-            KeyPressed();
+        _cooldownTimer -= Time.deltaTime;
+
+        if (_cooldownTimer <= 0)
+        {
+            _lineRenderer.startColor = _lineRenderer.endColor = Color.white;
+
+            if (Input.GetKeyDown(keyCode))
+                KeyPressed();
+        }
     }
 
     void KeyPressed()
@@ -109,7 +119,12 @@ public class BeatLine : MonoBehaviour
         }
 
         if (spritesInBounds.Count == 0)
+        {
+            _cooldownTimer = 1.2f;
             OnMiss();
+
+            _lineRenderer.startColor = _lineRenderer.endColor = Color.red;
+        }
         else
             OnHit(spritesInBounds[0]);
     }
@@ -175,7 +190,7 @@ public class BeatLine : MonoBehaviour
             return;
 
         var newIcon = Instantiate(towerIconPrefab, transform);
-        newIcon.transform.localPosition = new Vector3(_lineEnd, 0.0f, 0.0f);        
+        newIcon.transform.localPosition = new Vector3(_lineEnd, 0.0f, 0.0f);
         var spriteLerper = newIcon.AddComponent<SpriteLerper>();
         spriteLerper.fromColor = new Color(0f, 1f, 1f, 1f);
         spriteLerper.toColor = new Color(1f, 0.5f, 0.2f, 1f);
