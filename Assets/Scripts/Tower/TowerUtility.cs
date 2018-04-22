@@ -27,4 +27,9 @@ public class TowerUtility
     float shootAngle = Mathf.Asin(Mathf.Sin(targetMoveAngle) * targetVelocity.magnitude / projectileSpeed);
     return targetPosition + targetVelocity * displacement.magnitude / Mathf.Sin(Mathf.PI - targetMoveAngle - shootAngle) * Mathf.Sin(shootAngle) / targetVelocity.magnitude;
   }
+
+  public static Vector2 Vector2ToVector3(Vector3 vec3)
+  {
+    return new Vector2(vec3.x, vec3.z);
+  }
 }
