@@ -34,6 +34,7 @@ public class BeatLine : MonoBehaviour
     private SpriteRenderer _cursor;
 
     private AudioSource _audioSource;
+    private DifficultyManager _difficultyManager;
 
     public void Run(float timeOffset, AudioSource audioSource)
     {
@@ -53,6 +54,8 @@ public class BeatLine : MonoBehaviour
         _lineEnd = positions[positions.Length - 1].x;
         _lineLength = _lineEnd - _lineStart;
 
+        _difficultyManager = GetComponentInParent<DifficultyManager>();
+
         SpawnCursor();
     }
 
@@ -60,6 +63,8 @@ public class BeatLine : MonoBehaviour
     {
         if (!_running)
             return;
+
+        var difficulty = _difficultyManager.difficulty;
 
         var deltaTime = _audioSource.time - _lastUpdateTime;
         if (deltaTime < 0f) {
@@ -70,9 +75,9 @@ public class BeatLine : MonoBehaviour
         _lastUpdateTime = _audioSource.time;
 
         _elapsedTime += deltaTime;
-        if (_elapsedTime > (1.0f / beatRate))
+        if (_elapsedTime > (1f / beatRate) / difficulty)
         {
-            _elapsedTime -= (1f / beatRate);
+            _elapsedTime -= (1f / beatRate) / difficulty;
             SpawnIcon();
         }
 
@@ -138,6 +143,6 @@ public class BeatLine : MonoBehaviour
         var spriteLerper = newIcon.AddComponent<SpriteLerper>();
         spriteLerper.startX = _lineEnd;
         spriteLerper.endX = _lineStart;
-        spriteLerper.duration = maxNumBeats / beatRate;
+        spriteLerper.duration = maxNumBeats / beatRate / _difficultyManager.difficulty;
     }
 }
