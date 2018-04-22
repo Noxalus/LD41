@@ -400,48 +400,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 490d8cc7c2d67ab40b8ee402df0d0193, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &117971240
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4930889971270824, guid: bebe236be4536bd4da28a5d0fba2a128, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -1.0252653
-      objectReference: {fileID: 0}
-    - target: {fileID: 4930889971270824, guid: bebe236be4536bd4da28a5d0fba2a128, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 2.8738499
-      objectReference: {fileID: 0}
-    - target: {fileID: 4930889971270824, guid: bebe236be4536bd4da28a5d0fba2a128, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 4.558
-      objectReference: {fileID: 0}
-    - target: {fileID: 4930889971270824, guid: bebe236be4536bd4da28a5d0fba2a128, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4930889971270824, guid: bebe236be4536bd4da28a5d0fba2a128, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4930889971270824, guid: bebe236be4536bd4da28a5d0fba2a128, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4930889971270824, guid: bebe236be4536bd4da28a5d0fba2a128, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4930889971270824, guid: bebe236be4536bd4da28a5d0fba2a128, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: bebe236be4536bd4da28a5d0fba2a128, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &174966215
 GameObject:
   m_ObjectHideFlags: 0
@@ -791,7 +749,7 @@ MonoBehaviour:
     type: 2}
   cursorPrefab: {fileID: 1829850611508702, guid: bad9bd6ff5ff544f5a1cda5f9ffcdf79,
     type: 2}
-  keyCode: 118
+  keyCode: 32
   onMiss:
     m_PersistentCalls:
       m_Calls:
@@ -2958,7 +2916,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2066537423
 GameObject:
