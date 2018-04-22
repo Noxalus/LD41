@@ -141,6 +141,8 @@ public class BeatLine : MonoBehaviour
         var newIcon = Instantiate(towerIconPrefab, transform);
         newIcon.transform.localPosition = new Vector3(_lineEnd, 0.0f, 0.0f);        
         var spriteLerper = newIcon.AddComponent<SpriteLerper>();
+        spriteLerper.fromColor = new Color(0f, 1f, 1f, 1f);
+        spriteLerper.toColor = new Color(1f, 0.5f, 0.2f, 1f);
         spriteLerper.startX = _lineEnd;
         spriteLerper.endX = _lineStart;
         spriteLerper.duration = maxNumBeats / beatRate / _difficultyManager.difficulty;
