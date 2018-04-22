@@ -29,7 +29,15 @@ public class EnemySpawner : MonoBehaviour {
 
         if (_spawnCounter < 0)
         {
-            SpawnEnemy();
+            var spawnWave = Random.Range(0f, 1f) < difficultyManager.difficulty / difficultyManager.maxDifficulty;
+            var waveEnemyNumber = 1;
+
+            if (spawnWave)
+                waveEnemyNumber = Random.Range(1, (int)(3 * difficultyManager.difficulty));
+
+            for (int i = 0; i < waveEnemyNumber; i++)
+                SpawnEnemy();
+
             _spawnCounter = spawnInterval;
         }
     }
