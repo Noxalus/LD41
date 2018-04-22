@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 public class TowerController : MonoBehaviour
@@ -10,30 +8,23 @@ public class TowerController : MonoBehaviour
 
   private int _layerMask;
 
-  // Use this for initialization
   void Start()
   {
     _layerMask = (1 << 10);
-
   }
 
-  // Update is called once per frame
   void Update()
   {
     Vector3? target = PointToFoe();
+
     if (!target.HasValue)
-    {
       return;
-    }
-    transform.parent.rotation = Quaternion.Euler(
-      Vector3.up *
-      Vector2.Angle(
-        TowerUtility.Vector2ToVector3(this.transform.position),
-        TowerUtility.Vector2ToVector3(target.Value)));
-    if (Input.GetKeyDown(KeyCode.A))
-    {
-      Shoot();
-    }
+
+    var posX = transform.position.x - target.Value.x;
+    var posY = transform.position.z - target.Value.z;
+    var angle = (-Mathf.Atan2(posY, posX) * Mathf.Rad2Deg) - 90f;
+
+    transform.parent.rotation = Quaternion.Euler(0, angle, 0);
   }
 
   public void Shoot()
@@ -53,10 +44,10 @@ public class TowerController : MonoBehaviour
   private Vector3? PointToFoe()
   {
     RaycastHit[] hits = Physics.SphereCastAll(this.transform.position, range, Vector3.up, 99, _layerMask);
-    if (hits.Length == 0)
-    {
+
+        if (hits.Length == 0)
       return null;
-    }
+
     TowerUtility.SortFromCenter(this.transform.position, hits);
     GameObject target = hits[0].collider.gameObject;
     Vector3 targetPos = TowerUtility.predictedPosition(target.transform.position + Vector3.up * 0.25f, this.transform.position, target.GetComponent<NavMeshAgent>().velocity, 10f);
