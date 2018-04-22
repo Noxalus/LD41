@@ -1503,8 +1503,8 @@ MeshRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 955750104}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -2466,6 +2466,7 @@ GameObject:
   - component: {fileID: 2034306842}
   - component: {fileID: 2034306844}
   - component: {fileID: 2034306845}
+  - component: {fileID: 2034306846}
   m_Layer: 0
   m_Name: Root
   m_TagString: Untagged
@@ -2605,6 +2606,17 @@ MonoBehaviour:
   minDifficulty: 1
   maxDifficulty: 3
   timeSpan: 120
+--- !u!114 &2034306846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2034306840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2daedc24e932534caa412dbdb498a0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2035433802
 GameObject:
   m_ObjectHideFlags: 0
