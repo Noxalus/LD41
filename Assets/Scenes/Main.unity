@@ -2509,7 +2509,7 @@ MonoBehaviour:
   exitTransform: {fileID: 1296599993}
   enemyPrefabs:
   - {fileID: 1705829065266530, guid: bebe236be4536bd4da28a5d0fba2a128, type: 2}
-  spawnInterval: 1
+  spawnInterval: 5
   onEnemyDeath:
     m_PersistentCalls:
       m_Calls:
