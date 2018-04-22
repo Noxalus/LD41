@@ -238,6 +238,7 @@
     <Compile Include="Assets\Scripts\Beat.cs" />
     <Compile Include="Assets\Scripts\BeatLine.cs" />
     <Compile Include="Assets\Scripts\BeatManager.cs" />
+    <Compile Include="Assets\Scripts\DifficultyManager.cs" />
     <Compile Include="Assets\Scripts\Door.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy1.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyEventAction.cs" />
