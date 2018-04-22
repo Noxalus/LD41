@@ -2465,6 +2465,7 @@ GameObject:
   - component: {fileID: 2034306843}
   - component: {fileID: 2034306842}
   - component: {fileID: 2034306844}
+  - component: {fileID: 2034306845}
   m_Layer: 0
   m_Name: Root
   m_TagString: Untagged
@@ -2589,6 +2590,20 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &2034306845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2034306840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b387c4cf461245e59019be1756683f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minDifficulty: 1
+  maxDifficulty: 3
+  timeSpan: 120
 --- !u!1 &2035433802
 GameObject:
   m_ObjectHideFlags: 0
