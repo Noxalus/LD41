@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -13,10 +14,12 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverUI;
     public int towerCost;
     public int beatMissWaste;
+    public Text TimeLabel;
 
     private int _life;
     private int _money;
     private bool _gameIsOver;
+    private TimeSpan _initialTime;
 
     void Start()
     {
@@ -28,12 +31,20 @@ public class GameManager : MonoBehaviour
         UpdateLifeLabel();
 
         gameOverUI.SetActive(false);
+
+        _initialTime = TimeSpan.FromSeconds(Time.time);
     }
 
     private void Update()
     {
         if (_gameIsOver && Input.GetMouseButtonDown(0))
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        if (!_gameIsOver)
+        {
+            TimeSpan currentTime = TimeSpan.FromSeconds(Time.time) - _initialTime;
+            TimeLabel.text = currentTime.Minutes.ToString("00") + ":" + currentTime.Seconds.ToString("00");
+        }
     }
 
     private void UpdateMoneyLabel()
