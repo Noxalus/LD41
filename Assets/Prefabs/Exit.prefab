@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 212539508934429044}
   - component: {fileID: 65372632089568710}
   - component: {fileID: 54844041840216078}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: Exit
-  m_TagString: Untagged
+  m_TagString: Exit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

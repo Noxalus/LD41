@@ -20,13 +20,11 @@ public class Enemy1 : MonoBehaviour {
         _agent.SetDestination(target.position);
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        onDeath.Invoke(new EnemyAction(this));
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        onExit.Invoke(new EnemyAction(this));
+        if (other.tag == "Exit")
+            onExit.Invoke(new EnemyAction(this));
+        else if (other.tag == "Bullet")
+            onDeath.Invoke(new EnemyAction(this));
     }
 }
