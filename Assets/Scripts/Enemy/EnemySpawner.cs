@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class EnemySpawner : MonoBehaviour {
 
@@ -10,6 +9,7 @@ public class EnemySpawner : MonoBehaviour {
     public float spawnInterval;
     public EnemyActionEvent onEnemyDeath;
     public EnemyActionEvent onEnemyExit;
+    public DifficultyManager difficultyManager;
 
     private float _spawnCounter;
 
@@ -25,7 +25,7 @@ public class EnemySpawner : MonoBehaviour {
 
     void Update ()
     {
-        _spawnCounter -= Time.deltaTime;
+        _spawnCounter -= Time.deltaTime * difficultyManager.difficulty;
 
         if (_spawnCounter < 0)
         {
