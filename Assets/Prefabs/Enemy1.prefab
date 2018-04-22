@@ -106,7 +106,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: EnemyActionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  moneyDropped: 10
+  moneyDropped: 6
 --- !u!195 &195607261195074096
 NavMeshAgent:
   m_ObjectHideFlags: 1

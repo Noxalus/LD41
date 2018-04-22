@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
 
         // TODO: Play an animation
         soundManager.PlaySound("beatMissedSound");
-        WasteMoney(5);
+        WasteMoney(beatMissWaste);
     }
 
     public void OnBeatHit()
