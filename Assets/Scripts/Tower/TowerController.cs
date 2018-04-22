@@ -22,7 +22,7 @@ public class TowerController : MonoBehaviour
 
     var posX = transform.position.x - target.Value.x;
     var posY = transform.position.z - target.Value.z;
-    var angle = (-Mathf.Atan2(posY, posX) * Mathf.Rad2Deg) - 90f;
+    var angle = (-Mathf.Atan2(posY, posX) * Mathf.Rad2Deg) + 90f;
 
     transform.parent.rotation = Quaternion.Euler(0, angle, 0);
   }
@@ -31,9 +31,8 @@ public class TowerController : MonoBehaviour
   {
     Vector3? target = PointToFoe();
     if (!target.HasValue)
-    {
       return;
-    }
+
     GetComponent<AudioSource>().Play();
     GameObject bullet = Instantiate(prefabBullet, this.transform.position + new Vector3(0, 0.1f, 0), Quaternion.identity);
     Vector3 shoot = (target.Value - bullet.transform.position).normalized;

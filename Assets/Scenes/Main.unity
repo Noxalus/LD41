@@ -2607,7 +2607,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minDifficulty: 1
   maxDifficulty: 3
-  timeSpan: 120
+  timeSpan: 666
 --- !u!114 &2034306846
 MonoBehaviour:
   m_ObjectHideFlags: 0
