@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public EnemySpawner enemySpawner;
+    public SoundManager soundManager;
     public int initialLife;
     public int initialMoney;
     public Text moneyLabel;
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour
             return;
 
         // TODO: Play an animation
+        soundManager.PlaySound("beatMissedSound");
         WasteMoney(5);
     }
 
@@ -75,8 +77,13 @@ public class GameManager : MonoBehaviour
         if (_gameIsOver)
             return;
 
+        soundManager.PlaySound("enemyDeathSound");
+
         _money += enemyAction.enemy.moneyDropped;
         UpdateMoneyLabel();
+
+        soundManager.PlaySound("moneyEarnedSound");
+
     }
 
     public void OnEnemyExit(EnemyAction enemyAction)
@@ -86,6 +93,8 @@ public class GameManager : MonoBehaviour
 
         _life--;
         UpdateLifeLabel();
+
+        soundManager.PlaySound("enemyExitSound");
 
         if (_life == 0)
             GameOver();
@@ -97,11 +106,14 @@ public class GameManager : MonoBehaviour
             return;
 
         WasteMoney(towerCost);
+        soundManager.PlaySound("towerPlacedSound");
     }
 
     private void GameOver()
     {
         gameOverUI.SetActive(true);
         _gameIsOver = true;
+
+        soundManager.PlaySound("gameOverSound");
     }
 }

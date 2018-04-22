@@ -2467,6 +2467,7 @@ GameObject:
   - component: {fileID: 2034306844}
   - component: {fileID: 2034306845}
   - component: {fileID: 2034306846}
+  - component: {fileID: 2034306847}
   m_Layer: 0
   m_Name: Root
   m_TagString: Untagged
@@ -2556,13 +2557,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpawner: {fileID: 2034306842}
+  soundManager: {fileID: 2034306846}
   initialLife: 10
   initialMoney: 50
   moneyLabel: {fileID: 1813998519}
   lifeLabel: {fileID: 2201949}
   gameOverUI: {fileID: 1224890558}
   towerCost: 20
-  beatMissWaste: 0
+  beatMissWaste: 1
 --- !u!114 &2034306844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2617,6 +2619,93 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2daedc24e932534caa412dbdb498a0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverSound: {fileID: 8300000, guid: 82115ff58761c3442b76314f9e1f1185, type: 3}
+  enemyDeathSound: {fileID: 8300000, guid: 2e686c3140efcba4f8ed6065893aad84, type: 3}
+  enemyExitSound: {fileID: 8300000, guid: 99545042ddf41004e873d9ded9fa1d39, type: 3}
+  towerPlacedSound: {fileID: 8300000, guid: 987c2d4d25badd348a1e46bf14899335, type: 3}
+  moneyEarnedSound: {fileID: 8300000, guid: d81aa41c3b94b164791fb9026e7c320e, type: 3}
+  beatMissedSound: {fileID: 8300000, guid: 4030f0f5cada55f42bfce74924d32d58, type: 3}
+  audioSource: {fileID: 2034306847}
+--- !u!82 &2034306847
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2034306840}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 5
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &2035433802
 GameObject:
   m_ObjectHideFlags: 0

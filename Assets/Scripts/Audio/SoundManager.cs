@@ -2,6 +2,7 @@
 
 public class SoundManager : MonoBehaviour {
 
+    public AudioClip gameOverSound;
     public AudioClip enemyDeathSound;
     public AudioClip enemyExitSound;
     public AudioClip towerPlacedSound;
@@ -14,6 +15,9 @@ public class SoundManager : MonoBehaviour {
     {
         switch (soundName)
         {
+            case "gameOverSound":
+                audioSource.clip = gameOverSound;
+                break;
             case "enemyDeath":
                 audioSource.clip = enemyDeathSound;
                 break;
