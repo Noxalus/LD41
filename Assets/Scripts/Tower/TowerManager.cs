@@ -1,17 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TowerManager : MonoBehaviour
 {
   public GameObject tower1Prefab;
+  public UnityEvent onTowerAdded;
+
   private Camera _camera;
   private float _towerRadius;
   private int _layerMask = (1 << 8) | (1 << 9) | (1 << 11);
   private int _maxRayDistance = 11;
   private List<GameObject> _towers1 = new List<GameObject>();
   private GameManager _gameManager;
-  // Use this for initialization
+
   void Start()
   {
     _camera = Camera.main;
@@ -19,7 +21,6 @@ public class TowerManager : MonoBehaviour
     _gameManager = GetComponentInParent<GameManager>();
   }
 
-  // Update is called once per frame
   void Update()
   {
     if (Input.GetMouseButtonDown(0))
@@ -34,6 +35,7 @@ public class TowerManager : MonoBehaviour
           Vector3 pos = ray.GetPoint(0);
           pos.y = 0.6f;
           _towers1.Add(Instantiate(tower1Prefab, pos, Quaternion.identity));
+          onTowerAdded.Invoke();
         }
       }
     }
