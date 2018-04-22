@@ -38,6 +38,8 @@ public class BeatLine : MonoBehaviour
     private AudioSource _audioSource;
     private DifficultyManager _difficultyManager;
 
+    private Vector3 _localPosition;
+
     public void Run(float timeOffset, AudioSource audioSource)
     {
         _running = true;
@@ -55,6 +57,8 @@ public class BeatLine : MonoBehaviour
         _lineStart = positions[0].x;
         _lineEnd = positions[positions.Length - 1].x;
         _lineLength = _lineEnd - _lineStart;
+
+        _localPosition = transform.localPosition;
 
         _difficultyManager = GetComponentInParent<DifficultyManager>();
 
@@ -123,29 +127,29 @@ public class BeatLine : MonoBehaviour
             return;
         }
 
-        var magnitude = 0.25f;
+        var magnitude = 0.1f;
         var p1 = transform.localPosition;
-        var p2 = p0 + new Vector3(magnitude, 0f, 0f);
+        var p2 = p0 + new Vector3(0f, 0f, magnitude);
 
-        gameObject.Tween("ShakeBar", p1, p2, 0.01f, TweenScaleFunctions.CubicEaseIn, t => {
+        gameObject.Tween("ShakeBar", p1, p2, 0.04f, TweenScaleFunctions.CubicEaseIn, t => {
             transform.position = t.CurrentValue;
         }, t1 => shakeLeft(p0, count));
     }
 
     void shakeLeft(Vector3 p0, int count)
     {
-        var magnitude = 0.25f;
+        var magnitude = 0.1f;
         var p1 = transform.localPosition;
-        var p2 = p0 - new Vector3(magnitude, 0f, 0f);
+        var p2 = p0 - new Vector3(0f, 0f, magnitude);
 
-        gameObject.Tween("ShakeBar", p1, p2, 0.01f, TweenScaleFunctions.CubicEaseIn, t => {
+        gameObject.Tween("ShakeBar", p1, p2, 0.04f, TweenScaleFunctions.CubicEaseIn, t => {
             transform.position = t.CurrentValue;
         }, t1 => shakeRight(p0, count));
     }
 
     void OnMiss()
     {
-        shakeRight(transform.localPosition, 5);
+        shakeRight(_localPosition, 4);
 
         Debug.Log("OnMiss");
         onMiss.Invoke();
