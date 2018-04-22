@@ -36,6 +36,7 @@ public class TowerController : MonoBehaviour
       GameObject target = hits[0].collider.gameObject;
       GameObject bullet = Instantiate(prefabBullet, this.transform.position + new Vector3(0, 0.1f, 0), Quaternion.identity);
       Vector3 targetPos = TowerUtility.predictedPosition(target.transform.position + Vector3.up * 0.25f, this.transform.position, target.GetComponent<NavMeshAgent>().velocity, 10f);
+
       Vector3 shoot = (targetPos - bullet.transform.position).normalized;
       bullet.GetComponent<Rigidbody>().AddForce(shoot * 500.0f);
     }
