@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class BeatManager : MonoBehaviour {
 
+    private float _basePitch;
+
 	// Use this for initialization
 	void Start () {
         var audioSource = GetComponent<AudioSource>();
+        _basePitch = audioSource.pitch;
         
         var beat = GetComponent<Beat>();
         var bpm = beat.bpm;
@@ -25,6 +28,8 @@ public class BeatManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        var audioSource = GetComponent<AudioSource>();
+        var difficulty = GetComponentInParent<DifficultyManager>().difficulty;
+        audioSource.pitch = _basePitch * difficulty;
 	}
 }
