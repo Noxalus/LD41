@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+using DigitalRuby.Tween;
+using UnityEngine.SceneManagement;
 public class BeatLine : MonoBehaviour
 {
     // Sprites
@@ -113,8 +115,38 @@ public class BeatLine : MonoBehaviour
         return _cursor.bounds.Intersects(sprite.bounds);
     }
 
+    void shakeRight(Vector3 p0, int count)
+    {
+        if (count-- < 0)
+        {
+            transform.localPosition = p0;
+            return;
+        }
+
+        var magnitude = 0.25f;
+        var p1 = transform.localPosition;
+        var p2 = p0 + new Vector3(magnitude, 0f, 0f);
+
+        gameObject.Tween("ShakeBar", p1, p2, 0.01f, TweenScaleFunctions.CubicEaseIn, t => {
+            transform.position = t.CurrentValue;
+        }, t1 => shakeLeft(p0, count));
+    }
+
+    void shakeLeft(Vector3 p0, int count)
+    {
+        var magnitude = 0.25f;
+        var p1 = transform.localPosition;
+        var p2 = p0 - new Vector3(magnitude, 0f, 0f);
+
+        gameObject.Tween("ShakeBar", p1, p2, 0.01f, TweenScaleFunctions.CubicEaseIn, t => {
+            transform.position = t.CurrentValue;
+        }, t1 => shakeRight(p0, count));
+    }
+
     void OnMiss()
     {
+        shakeRight(transform.localPosition, 5);
+
         Debug.Log("OnMiss");
         onMiss.Invoke();
     }
