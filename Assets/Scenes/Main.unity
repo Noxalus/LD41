@@ -1335,7 +1335,7 @@ GameObject:
   - component: {fileID: 892154365}
   - component: {fileID: 892154364}
   - component: {fileID: 892154363}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: RythmBarBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2559,6 +2559,7 @@ MonoBehaviour:
   lifeLabel: {fileID: 2201949}
   gameOverUI: {fileID: 1224890558}
   towerCost: 20
+  beatMissWaste: 0
 --- !u!114 &2034306844
 MonoBehaviour:
   m_ObjectHideFlags: 0

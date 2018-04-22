@@ -9,7 +9,7 @@ public class TowerManager : MonoBehaviour
 
   private Camera _camera;
   private float _towerRadius;
-  private int _layerMask = (1 << 8) | (1 << 9) | (1 << 11);
+  private int _layerMask;
   private int _maxRayDistance = 11;
   private List<GameObject> _towers1 = new List<GameObject>();
   private GameManager _gameManager;
@@ -19,6 +19,10 @@ public class TowerManager : MonoBehaviour
     _camera = Camera.main;
     _towerRadius = tower1Prefab.transform.localScale.x / 1.6f;
     _gameManager = GetComponentInParent<GameManager>();
+    _layerMask = (1 << LayerMask.NameToLayer("Ground")) |
+                 (1 << LayerMask.NameToLayer("Path")) |
+                 (1 << LayerMask.NameToLayer("Tower")) |
+                 (1 << LayerMask.NameToLayer("NoTowerArea"));
   }
 
   void Update()
